@@ -4,18 +4,17 @@
 // 11-11-19
 
 //##########################################         BACKGROUND INFO          ####################################################################
-// This code sends a pwm signal through each coil
-// A PWM signal is a voltage/current that pulses (turns off and on) at a frequency
-// If the pin is set to a higher pwm, we can change the ammount of magnetic field from the coils (aka stronger magnetic force)
-// Each coil's pwm freqency can be changed (decreased/increased) by moivng up/down elements of a sine array so that the cart gets pushed along
+// This code sends a current through each coil
+// If the pin is set to a higher value, we can change the ammount of magnetic field from the coils (aka stronger magnetic force)
+// Each coil's current can be changed (decreased/increased) by moivng up/down elements of a sine array so that the cart gets pushed along
 // Each coils have a "phase" that is an ofset of a sine wave to push the cart along (PHASE1 is element 1 of sine, PHASE2 is shifted 24 ammount of elements, etc...)
-// Use shift(); function to shift the array(and pwm) down as the cart moves along the track and to get the new PWM value to set the coils to.
-// The drive(); function is used to write that calulated new pwm value to each coil. (includes error calculation from the rotary encoder and correction for the pwm to be correct)
+// Use shift(); function to shift the current array down as the cart moves along the track and to get the new value to align the coils with the magnets.
+// The drive(); function is used to write that calulated new current value to each coil. (includes error calculation from the rotary encoder and correction for the current to be correct)
 
 // The Rotary Encoder is used as a PID system. 
 // A PID system automatically applies accurate and responsive correction to the control (drive();) function
-// It is used to scale PWM values so the coils/magnets move at the correct speed based on the location
-// We can put in a wanted location (Setpoint value), an input value (measured distance from rotary encoder) and an outputed value will be used to drive the motor correctly to that position
+// It is used to scale current values so the coils/magnets move at the correct speed based on the location
+// We can put in a desired location (Setpoint value), an input value (actual measured position from rotary encoder) and an outputed value will be used to drive the motor correctly to that position
 //#################################################################################################################################################
 
 // Must Include this PID library (incuded in sharepoint)
